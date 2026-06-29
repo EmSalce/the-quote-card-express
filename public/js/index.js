@@ -1,55 +1,56 @@
 async function getRandomImage() {
-  const client_id = '';
-  const endpoint = `https://api.unsplash.com/photos/random/?client_id=${client_id}`;
+  const endpoint = 'http://localhost:8081/api/v1/getRandomImage';
   try {
     const response = await fetch(endpoint);
     const returnedData = await response.json();
-    const receivedPhotoUrl = returnedData.urls.regular;
+    const receivedPhotoUrl = returnedData.data;
 
     const imgDiv = document.querySelector('.background-img');
-    imgDiv.style.backgroundImage = `url("${receivedPhotoUrl}")`;
+    imgDiv.style.backgroundImage = `url(${receivedPhotoUrl})`;
   } catch (error) {
     console.error(error);
   }
 }
 
-//Cycle through quotes
-// 'use strict';
+getRandomImage();
 
-// const elements = {
-//   quote: document.getElementById('quote'),
-//   author: document.getElementById('author'),
-// };
+// Cycle through quotes
+('use strict');
 
-// const quotes = [
-//   {
-//     quote: 'All Hands! Abandon ship!',
-//     author: 'Captain Picard',
-//   },
+const elements = {
+  quote: document.getElementById('quote'),
+  author: document.getElementById('author'),
+};
 
-//   {
-//     quote: 'Doh!',
-//     author: 'Homer Simpson',
-//   },
+const quotes = [
+  {
+    quote: 'All Hands! Abandon ship!',
+    author: 'Captain Picard',
+  },
 
-//   {
-//     quote:
-//       'The dreams of those who have fallen! The hopes of those who will follow! Those two sets of dreams weave together into a double helix, drilling a path towards tomorrow!',
-//     author: 'Simon, Gurren Lagann',
-//   },
-// ];
+  {
+    quote: 'Doh!',
+    author: 'Homer Simpson',
+  },
 
-// function loopThroughQuotes() {
-//   let quoteIndex = 0;
-//   setInterval(() => {
-//     if (quoteIndex < quotes.length) {
-//       elements.quote.textContent = quotes[quoteIndex].quote;
-//       elements.author.textContent = quotes[quoteIndex].author;
-//       quoteIndex++;
-//     } else {
-//       quoteIndex = 0;
-//     }
-//   }, 3000);
-// }
+  {
+    quote:
+      'The dreams of those who have fallen! The hopes of those who will follow! Those two sets of dreams weave together into a double helix, drilling a path towards tomorrow!',
+    author: 'Simon, Gurren Lagann',
+  },
+];
 
-// setTimeout(loopThroughQuotes, 3000);
+function loopThroughQuotes() {
+  let quoteIndex = 0;
+  setInterval(() => {
+    if (quoteIndex < quotes.length) {
+      elements.quote.textContent = quotes[quoteIndex].quote;
+      elements.author.textContent = quotes[quoteIndex].author;
+      quoteIndex++;
+    } else {
+      quoteIndex = 0;
+    }
+  }, 3000);
+}
+
+setTimeout(loopThroughQuotes, 3000);

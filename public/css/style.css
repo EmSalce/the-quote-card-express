@@ -15,8 +15,8 @@ body {
 }
 
 .background-img {
-  background-image: url('../img/quotebackground.jpg');
-  background-size: auto;
+  background-image: url('../img/mitchell-luo-FWoq_ldWlNQ-unsplash.jpg');
+  background-size: cover;
   position: fixed;
   top: 0;
   left: 0;

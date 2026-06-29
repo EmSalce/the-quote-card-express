@@ -1,12 +1,15 @@
-console.log('SERVER FILE LOADED');
 ('use strict');
 
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = 8081;
 
-require('dotenv').config();
 const cors = require('cors');
+
+const corsOptions = {
+  origin: `http://localhost:${port}`,
+};
 
 app.use(cors());
 
@@ -27,8 +30,7 @@ async function getRandomImage() {
   }
 }
 
-app.use('/api/v1/getRandomImage', async (request, response) => {
-  response.json({ ok: true });
+app.get('/api/v1/getRandomImage', async (request, response) => {
   response.status(200).json({
     status: 200,
     data: await getRandomImage(),
